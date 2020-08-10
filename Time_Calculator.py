@@ -1,3 +1,4 @@
+
 colon = ':'
 def add_time(time1,time2):
     minutesInAnHour = 60
@@ -41,9 +42,7 @@ def add_time(time1,time2):
     time2_int_2 = time2_str[3:5]
     full_time_answer_hour = time1_hours_half_result_hour + int(time2_int_1)
     full_time_answer_mins = time1_mintutes_half_result_mins + int(time2_int_2)
-
-
-
+    
 
 
 
