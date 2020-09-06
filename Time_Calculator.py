@@ -123,36 +123,42 @@ def add_time(time1,time2,*days):
             nextDayBoolVal = True
             
          else:
-            nextDayBoolVal = False
-            
+            nextDayBoolVal = True
+         
    if ifDayBoolval is True:
+      if timeAddedHours == 0:
+         timeAddedHours += 12
       print(timeAddedHours,':',timeAddedMins,end="")
 
       ifDay = theDayWord
       if periodBoolVal is True:
          
-         period = ' PM'
+         period = ' PM, '
          print(period,end="")
+         print(ifDay,end="")
       else:
 
-         period = ' AM'
+         period = ' AM, '
          print(period,end="")
+         print(ifDay,end="")
       if nextDayBoolVal is True:
-         print('',daysLater,'days later')
+         print(' (',daysLater,'days later )')
       else:
          print('')
    elif ifDayBoolval is False:
+      if timeAddedHours == 0:
+         timeAddedHours += 12
       print(timeAddedHours,':',timeAddedMins,end="")
       if periodBoolVal is True:
 
-         period = ' PM'
+         period = ' PM '
          print(period,end="")
       else:
 
-         period = ' AM'
+         period = ' AM '
          print(period,end="")
       if nextDayBoolVal is True:
-         print('',daysLater,'days later')
+         print(' (',daysLater,'days later )')
       else:
          print('')
 
