@@ -82,22 +82,65 @@ def add_time(time1,time2,*days):
          while timeAddedHours >= 12:
             MerdiumHours += 1
             timeAddedHours -= 12
-         
+         if MerdiumHours >= 2:
+            nextDayBoolVal = True
+            
+         else:
+            nextDayBoolVal = False
+            
          while MerdiumHours >= 2:
+
             MerdiumHours -= 2
             theDayNum += 24
             if theDayNum > 168:
                theDayNum -= 168
+         ifDayBoolval = True
          if MerdiumHours == 1:
-            period = 'PM'
-         elif MerdiumHours == 0:
-            period = 'AM'
-         print()
-
+            periodBoolVal = True
+         else:
+            periodBoolVal = False
+         
       else:
          while timeAddedHours >= 12:
             MerdiumHours += 1
             timeAddedHours -= 12
+         ifDayBoolval = False
+         if MerdiumHours == 1:
+            periodBoolVal = True
+         else:
+            periodBoolVal = False
+         if MerdiumHours >= 2:
+            nextDayBoolVal = True
+            
+         else:
+            nextDayBoolVal = False
+            
+   if ifDayBoolval is True:
+      print('ifDayBoolval is True')
+      ifDay = theDayWord
+      if periodBoolVal is True:
+         print('periodBoolVal is True')
+         period = 'PM'
+      else:
+         print('periodBoolVal is False')
+         period = 'AM'
+      if nextDayBoolVal is True:
+         print('nextDayBoolVal is True\n')
+      else:
+         print('nextDayBoolVal is False\n')
+   elif ifDayBoolval is False:
+      print('ifDayBoolval is False')
+      if periodBoolVal is True:
+         print('periodBoolVal is True')
+         period = 'PM'
+      else:
+         print('periodBoolVal is False')
+         period = 'AM'
+      if nextDayBoolVal is True:
+         print('nextDayBoolVal is True\n')
+      else:
+         print('nextDayBoolVal is False\n')
+
 
           
    
