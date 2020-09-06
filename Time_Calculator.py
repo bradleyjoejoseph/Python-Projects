@@ -1,6 +1,7 @@
 
 
 def add_time(time1,time2,*days):
+   daysLater = 0
    MerdiumHours = 0
    quotes = '\''
    daysFixIntoLower = days
@@ -30,11 +31,16 @@ def add_time(time1,time2,*days):
       time1SecondNum = time1[TIME1secondPartColonPlaceNum:endBeforeMerdium]
       time1Merdium = time1[endBeforeMerdium:]
       timeAddedHours = int(time1FirstNum) + int(time2FirstNum)
-      timeAddedMins = int(time1SecondNum) + int(time2SecondNum)
-      while timeAddedMins >=60:
+      timeAddedMin = int(time1SecondNum) + int(time2SecondNum)
+      while timeAddedMin >=60:
          timeAddedHours += 1
-         timeAddedMins -= 60
-
+         timeAddedMin -= 60
+      timeAddedMinsStr = str(timeAddedMin)
+      timeAddedMinsStrCounted = len(timeAddedMinsStr)
+      if timeAddedMinsStrCounted <= 1:
+         timeAddedMins = '0' + str(timeAddedMin)
+      else:
+         timeAddedMins = timeAddedMin
 
 
 
@@ -89,7 +95,7 @@ def add_time(time1,time2,*days):
             nextDayBoolVal = False
             
          while MerdiumHours >= 2:
-
+            daysLater += 1
             MerdiumHours -= 2
             theDayNum += 24
             if theDayNum > 168:
@@ -104,6 +110,10 @@ def add_time(time1,time2,*days):
          while timeAddedHours >= 12:
             MerdiumHours += 1
             timeAddedHours -= 12
+         while MerdiumHours >=2:
+            daysLater += 1
+            nextDayBoolVal = True
+            MerdiumHours -= 2
          ifDayBoolval = False
          if MerdiumHours == 1:
             periodBoolVal = True
@@ -116,30 +126,35 @@ def add_time(time1,time2,*days):
             nextDayBoolVal = False
             
    if ifDayBoolval is True:
-      print('ifDayBoolval is True')
+      print(timeAddedHours,':',timeAddedMins,end="")
+
       ifDay = theDayWord
       if periodBoolVal is True:
-         print('periodBoolVal is True')
-         period = 'PM'
+         
+         period = ' PM'
+         print(period,end="")
       else:
-         print('periodBoolVal is False')
-         period = 'AM'
+
+         period = ' AM'
+         print(period,end="")
       if nextDayBoolVal is True:
-         print('nextDayBoolVal is True\n')
+         print('',daysLater,'days later')
       else:
-         print('nextDayBoolVal is False\n')
+         print('')
    elif ifDayBoolval is False:
-      print('ifDayBoolval is False')
+      print(timeAddedHours,':',timeAddedMins,end="")
       if periodBoolVal is True:
-         print('periodBoolVal is True')
-         period = 'PM'
+
+         period = ' PM'
+         print(period,end="")
       else:
-         print('periodBoolVal is False')
-         period = 'AM'
+
+         period = ' AM'
+         print(period,end="")
       if nextDayBoolVal is True:
-         print('nextDayBoolVal is True\n')
+         print('',daysLater,'days later')
       else:
-         print('nextDayBoolVal is False\n')
+         print('')
 
 
           
