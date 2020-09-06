@@ -1,19 +1,19 @@
 
-<<<<<<< HEAD
 
 def add_time(time1,time2,*days):
    MerdiumHours = 0
    quotes = '\''
    daysFixIntoLower = days
    daysOfTheWeek = {
-      'monday' : '1',
-      'tuesday' : '2',
-      'wednesday' : '3',
-      'thursday' : '4',
-      'friday' : '5',
-      'saturday' : '6',
-      'sunday' : '7'
+      'monday' : 24,
+      'tuesday' : 48,
+      'wednesday' : 72,
+      'thursday' : 96,
+      'friday' : 120,
+      'saturday' : 144,
+      'sunday' : 168
    }
+   daysOfTheWeekCountHours = 0
    if ':' in time2:
       time2NumForColonPlace = time2.find(':')
       TIME2firstPartColonPlaceNum = time2NumForColonPlace
@@ -31,6 +31,15 @@ def add_time(time1,time2,*days):
       time1Merdium = time1[endBeforeMerdium:]
       timeAddedHours = int(time1FirstNum) + int(time2FirstNum)
       timeAddedMins = int(time1SecondNum) + int(time2SecondNum)
+      while timeAddedMins >=60:
+         timeAddedHours += 1
+         timeAddedMins -= 60
+
+
+
+
+
+
       if time1Merdium == 'PM':
          MerdiumHours += 1
       if len(days) >= 1:
@@ -48,15 +57,51 @@ def add_time(time1,time2,*days):
          friday = daysOfTheWeek['friday']
          saturday = daysOfTheWeek['saturday']
          sunday = daysOfTheWeek['sunday']
-         print(theDayWord)
+         aDay = 24
+         if theDayWord == 'monday':
 
+            theDayNum = monday
+         elif theDayWord == 'tuesday':
+  
+            theDayNum = tuesday
+         elif theDayWord == 'wednesday':
 
-   while timeAddedHours >= 12:
-      MerdiumHours += 1
-      timeAddedHours -= 12
-   print('')
+            theDayNum = wednesday
+         elif theDayWord == 'thursday':
+
+            theDayNum = thursday
+         elif theDayWord == 'friday':
+
+            theDayNum = friday
+         elif theDayWord == 'saturday':
+
+            theDayNum = saturday
+         elif theDayWord == 'sunday':
+
+            theDayNum = sunday
+         while timeAddedHours >= 12:
+            MerdiumHours += 1
+            timeAddedHours -= 12
+         
+         while MerdiumHours >= 2:
+            MerdiumHours -= 2
+            theDayNum += 24
+            if theDayNum > 168:
+               theDayNum -= 168
+         if MerdiumHours == 1:
+            period = 'PM'
+         elif MerdiumHours == 0:
+            period = 'AM'
+         print()
+
+      else:
+         while timeAddedHours >= 12:
+            MerdiumHours += 1
+            timeAddedHours -= 12
+
+          
    
-
+  
     
 
 
@@ -79,63 +124,5 @@ add_time("11:43 PM", "24:20", "tueSday")
 add_time("6:30 PM", "205:12")
 # Returns: 7:42 AM (9 days later)
 
-=======
-colon = ':'
-def add_time(time1,time2):
-    minutesInAnHour = 60
-    hoursInADay = 24
-    daysInminutes = minutesInAnHour * hoursInADay
-    time1_counted_str = len(str(time1))
-    time2_counted_str = len(str(time2))
-    if time1_counted_str == 8:
-        print('PROCCESSING STR VALUES...')
-        time1_hours = time1[0:2]
-        time1_mintutes = time1[3:5]
-        time1_Meridum_Value = time1[6:8]
-        if time1_Meridum_Value == 'PM':
-            print('PROCESSING MIDNIGHT REQUEST...')
-            time1_hours_int = int(time1_hours)
-            time1_fixed_hours_int = time1_hours_int + 12
-            time1_hours_half_result_hour = time1_fixed_hours_int
-            time1_mintutes_half_result_mins = int(time1_mintutes)
-        elif time1_Meridum_Value == "AM":
-            print('PROCESSING MIDDAY REQUEST...')
-            time1_hours_int = int(time1_hours)
-            time1_hours_half_result_hour = time1_hours_int
-            time1_mintutes_half_result_mins = int(time1_mintutes)
-
-        else:
-            print('ERROR : YOU HAVE ENTERED THE WRONG INFORMATION')
-            print('YOU MIGHT BE MISSING A SPACE BETWEEN THE NUMBERS AND AM/PM')
-            print('YOU MIGHT BE ADDING WRONG CHARACTERS')
-            print('YOU MIGHT HAVE PUT IN AN INVALID TIME')
-
-
-    else:
-        print('PROCCESSING STR VALUES...')
-        print('ERROR : YOU HAVE ENTERED THE WRONG INFORMATION')
-        print('YOU MIGHT BE MISSING A SPACE BETWEEN THE NUMBERS AND AM/PM')
-        print('YOU MIGHT BE ADDING WRONG CHARACTERS')
-        print('YOU MIGHT HAVE PUT IN AN INVALID TIME')
-        exit()
-    time2_str = str(time2)
-    time2_int_1 = time2_str[0:2]
-    time2_int_2 = time2_str[3:5]
-    full_time_answer_hour = time1_hours_half_result_hour + int(time2_int_1)
-    full_time_answer_mins = time1_mintutes_half_result_mins + int(time2_int_2)
-    for hoursInADay in full_time_answer_hour:
-        print('PROCESSING HOURS IN DAYS...')
-
-
-
-
-
-
-    print(full_time_answer_hour,colon,full_time_answer_mins)
-
-add_time(input('STARTING TIME : '),input('HOW MUCH TIME YOU WANT TO ADD ON IN 00:00 FORMAT : '))
-add_time(input('STARTING TIME : '),input('HOW MUCH TIME YOU WANT TO ADD ON IN 00:00 FORMAT : '))
-add_time(input('STARTING TIME : '),input('HOW MUCH TIME YOU WANT TO ADD ON IN 00:00 FORMAT : '))
->>>>>>> a5e056bf57a82bcafe26f82ccc793dc31ffc1c30
 
 
